@@ -10,20 +10,16 @@
     <h1>Ejercicios</h1>
     <script>
 
-const multiplicadorTexto = (cadena = "", numero = undefined) => {
-    if(!cadena) return console.warn("No ingresaste ninguna cadena de texto");
-    if(numero === undefined) return console.warn("No ingresaste el número de veces a repetir");
-    if(numero <= 0) return console.error("El número no puede ser menor o igual a 0")
-    for(let i = 1;i<=numero;i++){
-        console.log(`${cadena}, ${i}`);
-    }
-}
-    
-multiplicadorTexto("Hola Mundo", 5);
-multiplicadorTexto("Hola Mundo", 0);
-multiplicadorTexto("Hola Mundo", -2);
-multiplicadorTexto("Hola Mundo");
-multiplicadorTexto("", 5);
+const eliminarPatron = (cadena = "", patron = "") =>
+    (!cadena)
+        ? console.warn("No ingresaste ninguna cadena de texto")
+        : (!patron)
+            ? console.warn("No ingresaste ningun patron")
+            : console.log(cadena.replace(new RegExp(patron, "ig"), ""));
+
+eliminarPatron()
+eliminarPatron("xyz1, xyz2, xyz3, xyz4, xyz5")
+eliminarPatron("xyz1, xyz2, xyz3, xyz4, xyz5", "xyz")
 
     </script>
 </body>
