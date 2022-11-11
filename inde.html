@@ -10,25 +10,26 @@
     <h1>Ejercicios</h1>
     <script>
 
-const promocion = (precio = undefined, decuento = 0) => {
-    if (!precio) return console.warn('No se ingreso el precio');
-    if (typeof precio !== "number") return console.error(`El valor "${precio}" No es un número`);
-    if (typeof decuento !== "number") return console.error(`El valor "${decuento}" No es un número`);
-    if (precio <= 0) return console.error('El precio no puede ser 0, ni un número negativo');
-    if (!decuento) return console.warn('No se ingreso el descuento');
-    let rebajado = precio * ((100 - decuento) / 100);
-    return console.log(`El precio con descuento es de ${rebajado}`)
+const conversorBinDec = (numero = undefined, base = undefined) => {
+    if (numero === undefined) return console.warn("No se ingreso ningun número");
+    if (typeof numero !== "number") return console.error(`El valor "${numero}" No es un número`);
+    if (base === undefined) return console.warn("No se ingreso ninguna base");
+    if (typeof base !== "number") return console.error(`El valor "${base}" No es un número`);
+
+    if (base === 2){
+        return console.info(`${numero} base ${base} = ${parseInt(numero, base)} base 10`)
+    } else if (base === 10) {
+        return console.info(`${numero} base ${base} = ${parseInt(numero, base)} base 2`)
+    } else {
+        return console.error(`El número ingresado como base es incorrecto`)
+    }
 }
 
-promocion();
-promocion(-500, 50);
-promocion(9000);
-promocion(1000, 20);
-promocion(1000, 40);
-promocion(1000, 80);
-promocion(5000, 20);
-promocion("1000", 20);
-promocion(1000, "20");
+conversorBinDec();
+conversorBinDec("2");
+conversorBinDec(2, "tio");
+conversorBinDec(100,2);
+conversorBinDec(10, 10);
 
     </script>
 </body>
