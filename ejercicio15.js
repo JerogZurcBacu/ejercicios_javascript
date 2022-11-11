@@ -11,7 +11,7 @@ const conversorBinDec = (numero = undefined, base = undefined) => {
     if (base === 2){
         return console.info(`${numero} base ${base} = ${parseInt(numero, base)} base 10`)
     } else if (base === 10) {
-        return console.info(`${numero} base ${base} = ${parseInt(numero, base)} base 2`)
+        return console.info(`${numero} base ${base} = ${(numero.toString(2))} base 2`)
     } else {
         return console.error(`El número ingresado como base es incorrecto`)
     }
