@@ -10,26 +10,23 @@
     <h1>Ejercicios</h1>
     <script>
 
-const conversorBinDec = (numero = undefined, base = undefined) => {
-    if (numero === undefined) return console.warn("No se ingreso ningun número");
-    if (typeof numero !== "number") return console.error(`El valor "${numero}" No es un número`);
-    if (base === undefined) return console.warn("No se ingreso ninguna base");
-    if (typeof base !== "number") return console.error(`El valor "${base}" No es un número`);
+const validarCorreo = (correo = "") => {
+    if (!correo) return console.warn(`No se ingreso ninguna cadena`);
+    if (typeof correo !== "string") return console.warn(`El valor ${correo}, no es una cadena de texto`);
 
-    if (base === 2){
-        return console.info(`${numero} base ${base} = ${parseInt(numero, base)} base 10`)
-    } else if (base === 10) {
-        return console.info(`${numero} base ${base} = ${(numero.toString(2))} base 2`)
-    } else {
-        return console.error(`El número ingresado como base es incorrecto`)
-    }
+    let expReg = /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(correo);
+
+    return(expReg)
+        ? console.log(`"${correo}" es un email válido`)
+        : console.warn(`"${correo}" NO es un email válido`)
 }
 
-conversorBinDec();
-conversorBinDec("2");
-conversorBinDec(2, "tio");
-conversorBinDec(100,2);
-conversorBinDec(10, 10);
+validarCorreo();
+validarCorreo("");
+validarCorreo(5);
+validarCorreo("joregcruzprof@gmail.com");
+validarCorreo("joregcg@jorgecg.tech");
+validarCorreo("jorge_17 arroba .com");
 
     </script>
 </body>
