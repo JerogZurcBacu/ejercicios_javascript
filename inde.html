@@ -10,23 +10,26 @@
     <h1>Ejercicios</h1>
     <script>
 
-const validarCorreo = (correo = "") => {
-    if (!correo) return console.warn(`No se ingreso ninguna cadena`);
-    if (typeof correo !== "string") return console.warn(`El valor ${correo}, no es una cadena de texto`);
+const paresIn = (arreglo = undefined) => {
+    if (arreglo === undefined) return console.warn('No se ingresó ningun arreglo');
+    if (!(arreglo instanceof Array)) return console.error("El valor que se ingreso no es un arreglo");
+    if (arreglo.length === 0) return console.error("El arreglo no contine ningun numero");
 
-    let expReg = /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(correo);
+    for (let num of arreglo) {
+        if (typeof num !== "number") return console.error("Los elementos del arreglo no son del tipo numérico");
+    }
 
-    return(expReg)
-        ? console.log(`"${correo}" es un email válido`)
-        : console.warn(`"${correo}" NO es un email válido`)
+    return console.info({
+        pares: arreglo.filter(num => num%2===0),
+        impares: arreglo.filter(num => num%2===1)
+    })
 }
 
-validarCorreo();
-validarCorreo("");
-validarCorreo(5);
-validarCorreo("joregcruzprof@gmail.com");
-validarCorreo("joregcg@jorgecg.tech");
-validarCorreo("jorge_17 arroba .com");
+paresIn();
+paresIn({'nombre': "Jorge", 'apellido': "Cruz"});
+paresIn([]);
+paresIn(["1", 2, "3"]);
+paresIn([1,2,3,4,5,6,7,8,9,0]);
 
     </script>
 </body>
