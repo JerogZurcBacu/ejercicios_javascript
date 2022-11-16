@@ -10,7 +10,7 @@
     <h1>Ejercicios</h1>
     <script>
 
-const paresIn = (arreglo = undefined) => {
+const promedio = (arreglo = undefined) => {
     if (arreglo === undefined) return console.warn('No se ingresó ningun arreglo');
     if (!(arreglo instanceof Array)) return console.error("El valor que se ingreso no es un arreglo");
     if (arreglo.length === 0) return console.error("El arreglo no contine ningun numero");
@@ -19,17 +19,23 @@ const paresIn = (arreglo = undefined) => {
         if (typeof num !== "number") return console.error("Los elementos del arreglo no son del tipo numérico");
     }
 
-    return console.info({
-        pares: arreglo.filter(num => num%2===0),
-        impares: arreglo.filter(num => num%2===1)
-    })
+    return console.info(
+        arreglo.reduce((total, num, index, arreglo) => {
+            total += num;
+            if (index === arreglo.length-1) {
+                return `El promedio de ${arreglo.join("+")} es ${total/arreglo.length}`;
+            } else {
+                return total;
+            }
+        })
+    )
 }
 
-paresIn();
-paresIn({'nombre': "Jorge", 'apellido': "Cruz"});
-paresIn([]);
-paresIn(["1", 2, "3"]);
-paresIn([1,2,3,4,5,6,7,8,9,0]);
+promedio();
+promedio({'nombre': "Jorge", 'apellido': "Cruz"});
+promedio([]);
+promedio(["1", 2, "3"]);
+promedio([9,8,7,6,5,4,3,2,1,0]);
 
     </script>
 </body>
